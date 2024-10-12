@@ -52,17 +52,20 @@ export const ProductCard: FC<IProductCard> = ({
 
   return (
     <div className="rounded-xl">
-      <div className="bg-white w-full h-full rounded-md flex flex-col justify-between">
+      <div className="bg-white shadow-lg w-full h-full rounded-md flex flex-col justify-between">
         <div>
           <Image
-            className="w-full rounded-t-md"
+            className="w-full rounded-t-md object-cover"
             src={item.imageSrc}
             alt={item.title}
             width={150}
             height={150}
+            layout="responsive"
           />
           <div className="p-4 flex flex-col justify-between">
-            <h2 className="font-bold text-lg text-gray-950">{item.title}</h2>
+            <h2 className="font-bold text-lg text-gray-950 truncate">
+              {item.title}
+            </h2>
             <p className="text-gray-600 py-2">{item.description}</p>
             <div className="gap-2 flex">
               <p className="text-black font-bold text-xl">

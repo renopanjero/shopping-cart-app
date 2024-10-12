@@ -69,11 +69,11 @@ export default function Home() {
     <>
       <Navbar />
 
-      <div className="container mx-auto grid grid-cols-12 gap-4 overflow-hidden">
-        <div className="gap-4 col-span-8 py-4">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 overflow-hidden">
+        <div className="gap-4 md:col-span-8 py-4">
           <SearchBar searchQuery={searchQuery} handleSearch={handleSearch} />
 
-          <div className=" grid grid-cols-3 gap-4 mt-5">
+          <div className=" grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
             {paginatedItems.map((item: Item) => {
               const quantity = getQuantity(item.id);
 
@@ -114,7 +114,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="col-span-4 bg-gray-800 rounded-md flex flex-col justify-between mb-4 mt-9">
+        <div className="md:col-span-4 bg-gray-800 rounded-md flex flex-col justify-between mb-4 mt-9">
           <div className="flex m-4 gap-2">
             <PiShoppingCartFill className="h-8 w-8" />
             <h2 className="font-bold text-2xl">Cart</h2>
@@ -158,7 +158,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-between bg-gray-800 rounded-md container mx-auto h-auto mb-4 items-center">
+      <div className="flex flex-col md:flex-row justify-between bg-gray-800 rounded-md container mx-auto h-auto mb-4 items-center">
         <div className=" m-5 space-y-3">
           <h1 className="text-3xl ">Currency</h1>
           <SelectCurr
@@ -167,12 +167,14 @@ export default function Home() {
             setSelectedCurrencies={setSelectedCurrencies}
           />
         </div>
-        <button
-          className="bg-gray-300 text-gray-800 p-3 px-6 text-2xl font-bold rounded-sm mx-8 hover:bg-white"
-          onClick={showCheckout}
-        >
-          Checkout
-        </button>
+        <div className="w-full md:w-auto md:mx-8 flex justify-center">
+          <button
+            className="bg-gray-300 text-gray-800 p-3 px-6 text-2xl font-bold rounded-sm mx-8 hover:bg-white md:w-auto"
+            onClick={showCheckout}
+          >
+            Checkout
+          </button>
+        </div>
       </div>
       {isCheckoutVisible && (
         <Checkout
